@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,175 +14,53 @@
     <script type="text/javascript" src="myScript.js"></script>
     <title>Document</title>
 </head>
+
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary"><h1>Weather Dashboard</h1></nav>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <h1>Weather Dashboard</h1>
+    </nav>
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-4" id="side-bar">
                         <!-- Search Area for User to Select City -->
                         <div id="search-div">
-                        <input type="text" id="user-search"> 
-                        <button type="button" class="btn btn-sm btn-primary">
-                            <img src="https://img.icons8.com/cotton/20/000000/search--v2.png"/>
-                        </button>
+                            <input type="text" id="user-search" placeholder="Search for a city">
+                            <button type="button" class="btn btn-sm btn-primary" id="search-button">
+                                <img src="https://img.icons8.com/cotton/20/000000/search--v2.png" />
+                            </button>
                         </div>
                         <br>
                         <!-- Buttons to Select Various Major Cities -->
-                        <table class="table table-hover">
+                        <table class="table table-hover" id="my-cities">
                             <thead>
                                 <tr>
-                                    <h2>Explore Cities:</h2>
+                                    <h2>My Cities:</h2>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>
-                                        Austin,
-                                    </td>
-                                    <td>
-                                        Texas
-                                    </td>
-                                    
-                                </tr>
-                                <tr class="table-active">
-                                    <td>
-                                        1
-                                    </td>
-                                    <td>
-                                        TB - Monthly
-                                    </td>
-                                    <td>
-                                        01/04/2012
-                                    </td>
-                                    <td>
-                                        Approved
-                                    </td>
-                                </tr>
-                                <tr class="table-success">
-                                    <td>
-                                        2
-                                    </td>
-                                    <td>
-                                        TB - Monthly
-                                    </td>
-                                    <td>
-                                        02/04/2012
-                                    </td>
-                                    <td>
-                                        Declined
-                                    </td>
-                                </tr>
-                                <tr class="table-warning">
-                                    <td>
-                                        3
-                                    </td>
-                                    <td>
-                                        TB - Monthly
-                                    </td>
-                                    <td>
-                                        03/04/2012
-                                    </td>
-                                    <td>
-                                        Pending
-                                    </td>
-                                </tr>
-                                <tr class="table-danger">
-                                    <td>
-                                        4
-                                    </td>
-                                    <td>
-                                        TB - Monthly
-                                    </td>
-                                    <td>
-                                        04/04/2012
-                                    </td>
-                                    <td>
-                                        Call in to confirm
-                                    </td>
-                                </tr>
+
                             </tbody>
                         </table>
                     </div>
                     <div class="col-md-8">
                         <div class="row">
                             <!-- Div To Display Current Weather Info -->
-                            <div class="col-md-12">
-                                <!-- 
-                                    To display current Temp, Humidity, Wind Speed, UV Index
-
-                                 -->
+                            <div class="col-md-12" id="current-weather">
+                                <h2 id="current-header">City </h2>
+                                <p id="current-temp">Temperature: </p>
+                                <p id="current-humidity">Humidity: </p>
+                                <p id="current-wind">Wind Speed: </p>
+                                <p id="current-UV">UV Index: </p>
                             </div>
                         </div>
                         <!-- Div to Display 5-Day Forecast in Cards -->
                         <div class="row">
                             <div class="col-md-12" id="#forecast-container">
                                 <h3>5-Day Forecast:</h3>
-                                <div class="card text-white bg-primary">
-                                    <h5 class="card-header">
-                                        Card title
-                                    </h5>
-                                    <div class="card-body">
-                                        <p class="card-text">
-                                            Card content
-                                        </p>
-                                    </div>
-                                    <div class="card-footer">
-                                        Card footer
-                                    </div>
-                                </div>
-                                <div class="card text-white bg-primary">
-                                    <h5 class="card-header">
-                                        Card title
-                                    </h5>
-                                    <div class="card-body">
-                                        <p class="card-text">
-                                            Card content
-                                        </p>
-                                    </div>
-                                    <div class="card-footer">
-                                        Card footer
-                                    </div>
-                                </div>
-                                <div class="card text-white bg-primary">
-                                    <h5 class="card-header">
-                                        Card title
-                                    </h5>
-                                    <div class="card-body">
-                                        <p class="card-text">
-                                            Card content
-                                        </p>
-                                    </div>
-                                    <div class="card-footer">
-                                        Card footer
-                                    </div>
-                                </div>
-                                <div class="card text-white bg-primary">
-                                    <h5 class="card-header">
-                                        Card title
-                                    </h5>
-                                    <div class="card-body">
-                                        <p class="card-text">
-                                            Card content
-                                        </p>
-                                    </div>
-                                    <div class="card-footer">
-                                        Card footer
-                                    </div>
-                                </div>
-                                <div class="card text-white bg-primary">
-                                    <h5 class="card-header">
-                                        Card title
-                                    </h5>
-                                    <div class="card-body">
-                                        <p class="card-text">
-                                            Card content
-                                        </p>
-                                    </div>
-                                    <div class="card-footer">
-                                        Card footer
-                                    </div>
+                                <div class="card-deck" id="forecast-deck">
+                                   
                                 </div>
                             </div>
                         </div>
@@ -191,4 +70,5 @@
         </div>
     </div>
 </body>
+
 </html>
