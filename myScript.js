@@ -22,7 +22,7 @@ $('#search-button').on('click', function() {
 	$('#my-cities')
 
 });
-
+// Function to get and display current weather info
 function weatherSearch(cityName) {
 	var queryUrl = 'https://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&appid=63aa044b0ff611c7351bd3f3fe384feb&units=imperial';
 	$.ajax({
@@ -44,7 +44,7 @@ function weatherSearch(cityName) {
 
 	})
 }
-
+//Function to get and display 5-day forecast info
 function weatherForecast(cityName) {
 	var queryUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=' + cityName + '&appid=63aa044b0ff611c7351bd3f3fe384feb&units=imperial';
 	$.ajax({
@@ -65,12 +65,12 @@ function weatherForecast(cityName) {
 		var date = $('<p>').text(days);
 		console.log(results.list[0].dt_text);
 		var humidity = $('<p>').text(results.list[i].main.humidity);
-		var city = results.city.city.name;
+		var city = results.city.name;
 		var temp = results.list[i].main.temp_max;
 		var weatherCard = $('<div>').attr({
 			'class': 'card text-white bg-primary mb-3',
 			'style': 'max-width:18rem'
-		})
+		});
 
 		var cardHead = $('<div>').attr('class','card-header');
 		var cardBody = $('<div>').attr('class','card-body');
@@ -82,6 +82,9 @@ function weatherForecast(cityName) {
 			cardBody.append(cardTitle,cardText);
 			cardHead.text(city);
 			$('#forecast-deck').append(weatherCard);
+		var leaveAccordion = $('<div class="accordion-title"');
+		leaveAccordion.text(city);
+			$("#my-cities").append(leaveAccordion);
 	}
 
 });
