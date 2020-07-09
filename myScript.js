@@ -71,7 +71,7 @@ function weatherForecast(cityName) {
 			'class': 'card text-white bg-primary mb-3',
 			'style': 'max-width:18rem'
 		})
-		$('#forecast-deck').append(weatherCard);
+
 		var cardHead = $('<div>').attr('class','card-header');
 		var cardBody = $('<div>').attr('class','card-body');
 		var cardTitle = $('<h5>').attr('class','card-title');
@@ -81,6 +81,7 @@ function weatherForecast(cityName) {
 			weatherCard.append(cardHead,cardBody);
 			cardBody.append(cardTitle,cardText);
 			cardHead.text(city);
+			$('#forecast-deck').append(weatherCard);
 	}
 
 });
