@@ -54,19 +54,19 @@ function weatherForecast(cityName) {
 }).then(function(response) {
 	var results = response;
 	console.log(results);
-	// var days = results.list.filter(function (forecast){
-	// 	return forecast.dt_txt.includes("12:00:00")
-	// });
-	// console.log(days);
+	
+	var days = results.list.filter(function (forecast){
+		return forecast.dt_txt.includes("12:00:00")
+	});
+	console.log(days);
 
-
-	for (i=0;i<results.list.length;i++) {
-		var icon = $('<img>').attr('src','https://openweathermap.org/img/w/' + results.weather[i].icon + '.png');
-		var date = $('<p>').text(days);
-		console.log(results.list[0].dt_text);
-		var humidity = $('<p>').text(results.list[i].main.humidity);
+	for (i=0;i<days.length;i++) {
+		var day = moment(days[i].dt, "X").format("dddd") //Grabs date from the object and converts to day name using moment.js 
+		var icon = $('<img>').attr('src','https://openweathermap.org/img/w/' + days[i].weather[0].icon + '.png');
+		var date = $('<p>').text(day);
+		var humidity = days[i].main.humidity;
 		var city = results.city.name;
-		var temp = results.list[i].main.temp_max;
+		var temp = days[i].main.temp_max;
 		var weatherCard = $('<div>').attr({
 			'class': 'card text-white bg-primary mb-3',
 			'style': 'max-width:18rem'
@@ -76,15 +76,16 @@ function weatherForecast(cityName) {
 		var cardBody = $('<div>').attr('class','card-body');
 		var cardTitle = $('<h5>').attr('class','card-title');
 		var cardText = $('<p>').attr('class','card-text');
-			cardTitle.text(icon);
-			cardText.text(weather + '<br><br>' + 'High: ' (temp) + 'F' + '<br><br>' + 'Humidity: ' + humidity);
+			cardTitle.html(icon);
+			cardText.html(weather + '<br><br>' + 'High: ' (temp) + 'F' + '<br><br>' + 'Humidity: ' + humidity);
 			weatherCard.append(cardHead,cardBody);
 			cardBody.append(cardTitle,cardText);
-			cardHead.text(city);
+			cardHead.text(day);
+			console.log(weatherCard);
 			$('#forecast-deck').append(weatherCard);
-		var leaveAccordion = $('<div class="accordion-title"');
-		leaveAccordion.text(city);
-			$("#my-cities").append(leaveAccordion);
+		// var leaveAccordion = $('<div class="accordion-title">');
+		// leaveAccordion.text(city);
+		// 	$("#my-cities").append(leaveAccordion);
 	}
 
 });
